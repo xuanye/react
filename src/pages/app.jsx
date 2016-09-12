@@ -17,7 +17,6 @@ const initialState = {};
 
 const store = configureStore(initialState, hashHistory);
 
-console.log(store);
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(hashHistory, store,{
     selectLocationState: (state) => state.router
@@ -25,17 +24,11 @@ const history = syncHistoryWithStore(hashHistory, store,{
 
 const routes = makeRoutes(store);
 
-ReactDOM.render(
-    <Provider store={store}>
-        <div>Hello World</div>
-    </Provider>,
-    document.getElementById('appMountNode')
-);
-/*
+console.log(store);
 ReactDOM.render(
     <Provider store={store}>
         <Root history={history} routes={routes} store={store} />
     </Provider>,
     document.getElementById('appMountNode')
 );
-*/
+

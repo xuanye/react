@@ -23,8 +23,8 @@ RenamePlugin.prototype.apply = function(compiler) {
         });
         if (file.emitted) {
           fs.rename(file.existsAt, file.existsAt.replace(fileName, newName));
-        }   
-      } 
+        }
+      }
       else if (/\.html$/) {
         htmlFiles.push(fileName);
       }

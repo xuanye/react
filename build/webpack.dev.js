@@ -20,7 +20,7 @@ var PORT = 8080;
 var HOST = utils.getIP();
 
 var args = process.argv;
-var hot = args.indexOf('--hot') > -1;
+var hot = false;//args.indexOf('--hot') > -1;
 var deploy = args.indexOf('--deploy') > -1;
 
 // 本地环境静态资源路径
@@ -51,7 +51,8 @@ if (deploy === true) {
 }
 
 // see http://webpack.github.io/docs/build-performance.html#sourcemaps
-config.devtool = '#eval-cheap-module-source-map';
+//config.devtool = '#eval-cheap-module-source-map';
+config.devtool = "source-map";
 
 new WebpackDevServer(webpack(config), {
   hot: hot,

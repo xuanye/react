@@ -1,13 +1,6 @@
 ﻿
-import DevRoot from "./root.dev";
-import ProdRoot from "./root.prod";
-
-var Root;
-
-if (__DEBUG__) {
-    Root = DevRoot;
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./root.prod')
 } else {
-    Root = ProdRoot;
+  module.exports = require('./root.dev')
 }
-
-export default Root;

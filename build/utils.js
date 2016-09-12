@@ -14,7 +14,7 @@ exports.pickFiles = function(options) {
     var name = matched[1];
     data[name] = path.resolve(__dirname, filename);
     return data;
-  }, {}); 
+  }, {});
 };
 
 exports.fullPath = function(dir) {
