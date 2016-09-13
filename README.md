@@ -1,4 +1,4 @@
-reactjs+redux starter kit  
+reactjs+redux starter kit
 ====
 
 ## 目录结构说明
