@@ -74,7 +74,6 @@ var config = {
     // chunkhash 不能与 --hot 同时使用
     // see https://github.com/webpack/webpack-dev-server/issues/377
     filename: __DEV__ ? 'js/[name].js' : 'js/[name].[chunkhash].js',
-    sourceMapFilename: '[file].map',
     chunkFilename: __DEV__ ? 'js/[name].js' : 'js/[name].[chunkhash].js'
   },
   module: {},
@@ -113,7 +112,7 @@ config.module.loaders.push({
     test: /\.jsx?$/,
     exclude: /node_modules/,
     // 这里使用 loaders ，因为后面还需要添加 loader
-    loaders: ['babel?cacheDirectory=' + CACHE_PATH]
+    loaders: ['babel'] //?cacheDirectory=' + CACHE_PATH
 });
 
 // 编译 sass
@@ -177,13 +176,13 @@ config.plugins.push(
     chunks: ['app', 'lib'],
     template: SRC_PATH + '/pages/app.html',
     minify: __DEV__ ? false : {
-      collapseWhitespace: true,
-      collapseInlineTagWhitespace: true,
-      removeRedundantAttributes: true,
-      removeEmptyAttributes: true,
-      removeScriptTypeAttributes: true,
-      removeStyleLinkTypeAttributes: true,
-      removeComments: true
+        collapseWhitespace: true,
+        collapseInlineTagWhitespace: true,
+        removeRedundantAttributes: true,
+        removeEmptyAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        removeComments: true
     }
   })
 );
@@ -209,6 +208,12 @@ config.plugins.push(function() {
     });
   });
 });
+<<<<<<< HEAD
+=======
+
+//config.module.preLoaders=[];
+//config.module.preLoaders.push({ test: /\.js$/, loader: "source-map-loader" });
+>>>>>>> ff03dfe3eef472ca0c21551c390ca845d3caaff9
 
 module.exports = config;
 

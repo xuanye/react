@@ -1,8 +1,11 @@
 import React from "react";
 import {Link} from "react-router";
 
-export default class Layout extends React.Component<any,any>{
+export default class Layout extends React.Component{
     render(){
-        return (<div>{this.props.children}</div>);
+        return (<div>
+        <div>Hello World1</div>
+        {this.props.children}
+        </div>);
     }
 }

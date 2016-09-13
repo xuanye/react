@@ -1,6 +1,12 @@
-﻿
-if (process.env.NODE_ENV === 'production') {
-  module.exports = require('./root.prod')
-} else {
-  module.exports = require('./root.dev')
+import React from "react"
+import { Router } from "react-router";
+
+export default class Root extends React.Component {
+    render() {
+
+        return (
+            <Router history={this.props.history} routes={this.props.routes} />
+        );
+    }
+
 }
