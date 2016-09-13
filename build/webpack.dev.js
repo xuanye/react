@@ -31,7 +31,9 @@ config.entry.app.unshift('webpack-dev-server/client?' + localPublicPath);
 
 // 开启热替换相关设置
 if (hot === true) {
-  config.entry.app.unshift('webpack/hot/only-dev-server');
+  config.entry.app.splice(1,0,'webpack/hot/only-dev-server');
+  //config.entry.app.unshift('webpack/hot/only-dev-server');
+
   // 注意这里 loaders[0] 是处理 .js 文件的 loader
   config.module.loaders[0].loaders.unshift('react-hot');
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
@@ -51,8 +53,9 @@ if (deploy === true) {
 }
 
 // see http://webpack.github.io/docs/build-performance.html#sourcemaps
-config.devtool = '#eval-cheap-module-source-map';
+config.devtool = '#source-map';
 
+console.log( config.module.loaders);
 new WebpackDevServer(webpack(config), {
   hot: hot,
   inline: true,

@@ -5,6 +5,5 @@ import Layout from "../pages/layout";
 
 export default (store) => (
     <Route path="/" component= { Layout } >
-        <IndexRedirect to="/" />
     </Route>
 )

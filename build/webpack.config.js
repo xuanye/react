@@ -23,17 +23,12 @@ var __DEV__ = process.env.NODE_ENV !== 'production';
 var args = process.argv;
 var uglify = args.indexOf('--uglify') > -1;
 
-//自定义"魔力"变量
-var definePlugin = new webpack.DefinePlugin({
-    __DEBUG__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || "false")),
-    __DEBUG_NEW_WINDOW__:true
-});
 
 // conf
 // import api from 'conf/api';
 var alias = pickFiles({
-  id: /(conf\/[^\/]+).js$/,
-  pattern: SRC_PATH + '/conf/*.js'
+  id: /(apis\/[^\/]+).js$/,
+  pattern: SRC_PATH + '/apis/*.js'
 });
 
 // components
@@ -79,10 +74,8 @@ var config = {
     // chunkhash 不能与 --hot 同时使用
     // see https://github.com/webpack/webpack-dev-server/issues/377
     filename: __DEV__ ? 'js/[name].js' : 'js/[name].[chunkhash].js',
-    sourceMapFilename: '[file].map',
     chunkFilename: __DEV__ ? 'js/[name].js' : 'js/[name].[chunkhash].js'
   },
-  devtool: "source-map",
   module: {},
   resolve: {
     root: SRC_PATH,
@@ -91,20 +84,20 @@ var config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      // http://stackoverflow.com/questions/30030031/passing-environment-dependent-variables-in-webpack
-      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || 'development')
+        __DEBUG__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || "false")),
+        __DEBUG_NEW_WINDOW__:true,
+        // http://stackoverflow.com/questions/30030031/passing-environment-dependent-variables-in-webpack
+        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || 'development')
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['lib', 'manifest']
+        names: ['lib', 'manifest']
     }),
     // 使用文件名替换数字作为模块ID
     // new webpack.NamedModulesPlugin(),
     // 使用 hash 作模块 ID，文件名作ID太长了，文件大小剧增
     new HashedModuleIdsPlugin(),
     // 根据文件内容生成 hash
-    new WebpackMd5Hash(),
-    //自定义的全局变量
-    definePlugin
+    new WebpackMd5Hash()
   ]
 };
 
@@ -118,7 +111,7 @@ config.module.loaders.push({
     test: /\.jsx?$/,
     exclude: /node_modules/,
     // 这里使用 loaders ，因为后面还需要添加 loader
-    loaders: ['babel?cacheDirectory=' + CACHE_PATH]
+    loaders: ['babel'] //?cacheDirectory=' + CACHE_PATH
 });
 
 // 编译 sass
@@ -182,13 +175,13 @@ config.plugins.push(
     chunks: ['app', 'lib'],
     template: SRC_PATH + '/pages/app.html',
     minify: __DEV__ ? false : {
-      collapseWhitespace: true,
-      collapseInlineTagWhitespace: true,
-      removeRedundantAttributes: true,
-      removeEmptyAttributes: true,
-      removeScriptTypeAttributes: true,
-      removeStyleLinkTypeAttributes: true,
-      removeComments: true
+        collapseWhitespace: true,
+        collapseInlineTagWhitespace: true,
+        removeRedundantAttributes: true,
+        removeEmptyAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        removeComments: true
     }
   })
 );
@@ -214,8 +207,9 @@ config.plugins.push(function() {
     });
   });
 });
-config.module.preLoaders=[];
-config.module.preLoaders.push({ test: /\.js$/, loader: "source-map-loader" });
+
+//config.module.preLoaders=[];
+//config.module.preLoaders.push({ test: /\.js$/, loader: "source-map-loader" });
 
 module.exports = config;
 

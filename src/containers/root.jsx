@@ -1,13 +1,11 @@
-﻿
-import DevRoot from "./root.dev";
-import ProdRoot from "./root.prod";
+﻿import React from "react"
+import { Router } from "react-router";
 
-var Root;
+export default class Root extends React.Component<any,any> {
+    render() {
 
-if (__DEBUG__) {
-    Root = DevRoot;
-} else {
-    Root = ProdRoot;
+        return (
+            <Router history={this.props.history} routes={this.props.routes} />
+        );
+    }
 }
-
-export default Root;
