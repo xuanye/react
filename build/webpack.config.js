@@ -208,12 +208,7 @@ config.plugins.push(function() {
     });
   });
 });
-<<<<<<< HEAD
-=======
 
-//config.module.preLoaders=[];
-//config.module.preLoaders.push({ test: /\.js$/, loader: "source-map-loader" });
->>>>>>> ff03dfe3eef472ca0c21551c390ca845d3caaff9
 
 module.exports = config;
 
