@@ -1,6 +1,6 @@
-import MyList from "./mylist";
+import ProductList from "./list";
 
 
 
 
-export { MyList } ;
+export { ProductList } ;
