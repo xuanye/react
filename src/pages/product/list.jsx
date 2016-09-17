@@ -14,7 +14,7 @@ class List extends React.Component{
     render(){
         return (
             <div>
-                <div> 商品列表 </div>
+                <div> 商品列表12 </div>
                 <ul>{
                     this.props.data.map(function(item,i){
                         return (<li key={i}>{item.name}</li>);

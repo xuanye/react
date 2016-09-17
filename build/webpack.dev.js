@@ -20,7 +20,7 @@ var PORT = 8080;
 var HOST = utils.getIP();
 
 var args = process.argv;
-var hot = false;//args.indexOf('--hot') > -1;
+var hot = args.indexOf('--hot') > -1;
 var deploy = args.indexOf('--deploy') > -1;
 
 // 本地环境静态资源路径
@@ -57,7 +57,7 @@ if (deploy === true) {
 config.devtool = '#source-map';
 
 
-console.log( config.module.loaders);
+//console.log( config.module.loaders);
 new WebpackDevServer(webpack(config), {
   hot: hot,
   inline: true,

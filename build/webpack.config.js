@@ -168,7 +168,7 @@ if (!__DEV__) {
   );
 }
 
-// html 页面
+// html 页面,可以配置生成多个页面
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 config.plugins.push(
   new HtmlwebpackPlugin({
