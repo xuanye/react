@@ -12,6 +12,7 @@ class List extends React.Component{
         this.props.queryList();
     }
     render(){
+        const loading = this.props.isFetching?(<i>正在加载...</i>):null;
         return (
             <div>
                 <div> 商品列表12 </div>
@@ -21,13 +22,14 @@ class List extends React.Component{
                     })
                 }
                 </ul>
+                { loading }
             </div>
         )
     }
 }
 const mapStateToProps =  state =>{
     return {
-        isloading: state.product.isloading,
+        isFetching: state.common.isFetching,
         data:state.product.data
     }
 }

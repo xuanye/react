@@ -13,7 +13,8 @@ reactjs+redux starter kit
 ├─── components             # 公共的控件和组件
 ├─── routes                 # 路由配置
 ├─── containers             # 根容器一般不需要调整
-├─── apis                   # 一些公共的帮助方法和对服务端请求的封装
+├─── services               # 对服务端请求的封装
+├─── utils                  # 公共方法和特殊组件
 ├─── redux                  # 相关的所有文件目录
 ├───── modules              # 鸭子模型中的业务代码，用于存放各模块业务Action和Reducer的实现
 ├───── configureStore.js    # 配置Redux的Store，添加默认的插件（redux-thunk）

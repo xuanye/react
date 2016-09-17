@@ -24,46 +24,18 @@ var args = process.argv;
 var uglify = args.indexOf('--uglify') > -1;
 
 
-// conf
-// import api from 'conf/api';
-var alias = pickFiles({
-  id: /(apis\/[^\/]+).js$/,
-  pattern: SRC_PATH + '/apis/*.js'
-});
-
-// components
-// import Alert from 'components/alert';
-alias = Object.assign(alias, pickFiles({
-  id: /(components\/[^\/]+)/,
-  pattern: SRC_PATH + '/components/*/index.js'
-}));
-
-// reducers
-// import reducers from 'reducers/index';
-alias = Object.assign(alias, pickFiles({
-  id: /(reducers\/[^\/]+).js/,
-  pattern: SRC_PATH + '/js/reducers/*'
-}));
-
-// actions
-// import actions from 'actions/index';
-alias = Object.assign(alias, pickFiles({
-  id: /(actions\/[^\/]+).js/,
-  pattern: SRC_PATH + '/js/actions/*'
-}));
-
-alias = Object.assign(alias, {
-  'react-router': NODE_MODULES_PATH + '/react-router/lib/index.js',
-  'react-redux': NODE_MODULES_PATH + '/react-redux/lib/index.js',
-  'redux': NODE_MODULES_PATH + '/redux/lib/index.js',
-  'redux-thunk': NODE_MODULES_PATH + '/redux-thunk/lib/index.js'
-});
-
+// 设置别名
+var alias = {
+    SERVICES:SRC_PATH+'/services',
+    PAGES:SRC_PATH+"/pages",
+    MODULES:SRC_PATH+"/redux/modules",
+    COMPONENTS:SRC_PATH+"/components"
+}
 
 var config = {
   context: SRC_PATH,
   entry: {
-    app: [SRC_PATH + '/pages/app.jsx'],
+    app: [SRC_PATH + '/pages/app.js'],
     lib: [
       'react', 'react-dom', 'react-router','redux', 'react-redux',
       'react-router-redux', 'redux-actions','redux-thunk','react-tap-event-plugin'
@@ -86,7 +58,6 @@ var config = {
     //自定义的全局变量
     new webpack.DefinePlugin({
         __DEBUG__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || "false")),
-        __DEBUG_NEW_WINDOW__:true,
         // http://stackoverflow.com/questions/30030031/passing-environment-dependent-variables-in-webpack
         "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || 'development')
     }),
