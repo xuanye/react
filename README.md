@@ -3,6 +3,7 @@ reactjs+redux starter kit
 
 ## 目录结构说明
 
+```
 ├── build                   # webpack配置目录和相关的帮助方法   
 ├── mock                    # 需要服务端模拟的接口，需要时需要单独启动   
 ├── src                     # 所有开始编码的地方   
@@ -22,3 +23,4 @@ reactjs+redux starter kit
 ├── package.json            # package.json   
 ├── README.md               # 说明文档   
 └── .babelrc                # babel的编译配置文件   
+``` 
