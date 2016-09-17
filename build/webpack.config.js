@@ -65,8 +65,8 @@ var config = {
   entry: {
     app: [SRC_PATH + '/pages/app.jsx'],
     lib: [
-      'react', 'react-dom', 'react-router',
-      'redux', 'react-redux', 'redux-thunk'
+      'react', 'react-dom', 'react-router','redux', 'react-redux',
+      'react-router-redux', 'redux-actions','redux-thunk','react-tap-event-plugin'
     ],
   },
   output: {
