@@ -15,7 +15,7 @@ class Detail extends React.Component{
         const loading = this.props.isFetching?(<i>正在加载...</i>):null;
         return (
             <div>
-                <div> 商品列表</div>
+                <div> 商 品 详 情 </div>
                 <ul>{
                     this.props.data.map(function(item,i){
                         return (<li key={i}>{item.name}</li>);
