@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 
 import {queryList} from "MODULES/products";
 
-class List extends React.Component{
+class Detail extends React.Component{
     componentWillMount(){
         this.props.queryList();
     }
@@ -15,7 +15,7 @@ class List extends React.Component{
         const loading = this.props.isFetching?(<i>正在加载...</i>):null;
         return (
             <div>
-                <div> 商品列表 </div>
+                <div> 商品列表</div>
                 <ul>{
                     this.props.data.map(function(item,i){
                         return (<li key={i}>{item.name}</li>);
@@ -33,5 +33,5 @@ const mapStateToProps =  state =>{
         data:state.product.data
     }
 }
-export default connect(mapStateToProps,{queryList})(List);
+export default connect(mapStateToProps,{queryList})(Detail);
 
