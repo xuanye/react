@@ -38,7 +38,7 @@ var config = {
     app: [SRC_PATH + '/pages/app.js'],
     lib: [
       'react', 'react-dom', 'react-router','redux', 'react-redux',
-      'react-router-redux', 'redux-actions','redux-thunk','react-tap-event-plugin'
+      'react-router-redux', 'redux-thunk','react-tap-event-plugin'
     ],
   },
   output: {
@@ -113,7 +113,7 @@ config.postcss = function() {
 config.module.loaders.push({
   test: /\.(?:jpg|gif|png|svg)$/,
   loaders: [
-    'url?limit=1024&name=img/[hash].[ext]',
+    'url-loader?limit=8092&name=img/[name].[ext]?[hash]',
     'image-webpack'
   ]
 });

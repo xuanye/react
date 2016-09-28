@@ -5,11 +5,16 @@ import { connect } from "react-redux";
 
 
 
-import {queryList} from "MODULES/products";
+import {queryList,itemAdd} from "MODULES/products";
 
 class List extends React.Component{
     componentWillMount(){
         this.props.queryList();
+    }
+    addProduct(){
+        const id =this.props.data.length-3;
+        const name = `自定义商品${id}`;
+        this.props.itemAdd({id,name});
     }
     render(){
         const loading = this.props.isFetching?(<i>正在加载...</i>):null;
@@ -22,6 +27,7 @@ class List extends React.Component{
                     })
                 }
                 </ul>
+                <button onClick={(e)=>this.addProduct()}>添加商品</button>
                 { loading }
             </div>
         )
@@ -33,5 +39,5 @@ const mapStateToProps =  state =>{
         data:state.product.data
     }
 }
-export default connect(mapStateToProps,{queryList})(List);
+export default connect(mapStateToProps,{queryList,itemAdd})(List);
 

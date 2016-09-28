@@ -1,5 +1,4 @@
-
-import { createAction, handleActions } from "redux-actions";
+import { createAction, handleActions } from "../reduxActions";
 
 //使用公告的服务
 import { requestError,requestStart,requestEnd } from "./common";
@@ -13,6 +12,7 @@ import productService from "SERVICES/productService";
 // ------------------------------------
 export const LIST_LOADED = "myapp/product/listloaded";
 
+export const ITEM_ADD = "myapp/product/itemadd";
 
 // ------------------------------------
 // Actions Creator
@@ -22,6 +22,8 @@ export const LIST_LOADED = "myapp/product/listloaded";
 
 // 内部不需要公开的action
 const listLoaded = createAction(LIST_LOADED);
+
+export const itemAdd = createAction(ITEM_ADD);
 
 
 // 异步 Action creators: 使用 redux-thunk.
@@ -59,7 +61,10 @@ const initialState = {
 const reducer = handleActions({
     [LIST_LOADED]: (state, action) => {
         return Object.assign({}, state, { data: action.payload });
-    }
+    },
+    [ITEM_ADD]: (state, {payload:item}) => {
+        return Object.assign({}, state, { data: [...state.data,item] });
+    },
 }, initialState);
 
 export default reducer;
