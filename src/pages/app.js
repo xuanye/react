@@ -8,7 +8,7 @@ import { syncHistoryWithStore, routerReducer } from "react-router-redux";
 
 import makeRoutes from "../routes";
 
-import "../static/app.css";
+import "../styles/app.scss";
 import configureStore from "../redux/configureStore";
 
 import Root from "../containers/root";

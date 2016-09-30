@@ -17,5 +17,10 @@ export default (store) => (
                 cb(null, require('PAGES/product/detail').default)
             }, 'productdetail')
         }}/>
+        <Route path="/chat" getComponent={(nextState,cb)=>{
+            require.ensure([], (require) => {
+                cb(null, require('PAGES/chat/index').default)
+            }, 'chat')
+        }}/>
     </Route>
 )
